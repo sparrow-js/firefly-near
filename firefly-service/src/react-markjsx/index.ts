@@ -141,6 +141,43 @@ export function deleteNode(path: string, uid: string) {
   FsHandler.getInstance().writeFile(path, code, true);
 }
 
+export function insertNode(data: any) {
+  const {
+    containerId,
+    path,
+    near: { pos, id },
+  } = data;
+
+  const code = `
+<p>
+  追加代码placeholder
+</p>`;
+  const tempSource = TS.createSourceFile(path, code, TS.ScriptTarget.ESNext);
+  const { statements } = tempSource;
+  const res = transform(path);
+  const { cacheTree, sourceFile } = res;
+  const uidMap = cacheTree[path];
+  const container = uidMap[containerId];
+  let { position } = uidMap[id];
+  if (pos === 'after') {
+    position = position + 1;
+  }
+  if (statements[0] && (statements[0] as any).expression) {
+    container.linkNode.children.splice(
+      position,
+      0,
+      (statements[0] as any).expression,
+    );
+  }
+  const printer = TS.createPrinter();
+  const codeText = printer.printNode(
+    TS.EmitHint.Unspecified,
+    sourceFile,
+    sourceFile,
+  );
+  FsHandler.getInstance().writeFile(path, codeText, true);
+}
+
 export default function transform(path: string) {
   alreadyExistingUIDs = new Set();
   let sourceFile = null;

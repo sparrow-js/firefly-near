@@ -8,7 +8,7 @@ import * as prettier from 'prettier';
 import * as chokidar from 'chokidar';
 import * as fs from 'fs-extra';
 import * as Path from 'path';
-import { deleteNode } from '../react-markjsx';
+import { deleteNode, insertNode } from '../react-markjsx';
 
 const watcherQueue = [];
 
@@ -16,12 +16,16 @@ const watcherQueue = [];
 export class EditService {
   rootDir = '';
 
-  insertNode(nodeParam: NodeParam): any {
-    const content = FsHandler.getInstance().parseFile(nodeParam.path);
-    const code = Generator.getInstance().insertNode(content, nodeParam);
-    // const options = prettier.resolveConfig.sync(); // 使用默认配置
-    const formatCode = prettier.format(code);
-    FsHandler.getInstance().writeFile(nodeParam.path, formatCode);
+  insertNode(data: any): any {
+    // const content = FsHandler.getInstance().parseFile(nodeParam.path);
+    // const code = Generator.getInstance().insertNode(content, nodeParam);
+    // // const options = prettier.resolveConfig.sync(); // 使用默认配置
+    // const formatCode = prettier.format(code);
+    // FsHandler.getInstance().writeFile(nodeParam.path, formatCode);
+    // insertNode(nodeParam.path, nodeParam.uid);
+    // { containerId: '448', near: { pos: 'after', id: 'ca2' } }
+    // console.log('********9', nodeParam);
+    insertNode(data);
     return {
       status: 1,
     };

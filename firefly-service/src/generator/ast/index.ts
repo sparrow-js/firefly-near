@@ -35,15 +35,6 @@ export default class Generator {
           let position = nodeParam.position;
           const children = (node as any).children;
           for (let i = 0; i < children.length; i++) {
-            // console.log(
-            //   '********5',
-            //   position,
-            //   children[i],
-            //   children[i].value,
-            //   (children[i].value || '').includes('\n'),
-            //   i,
-            //   effective,
-            // );
             if (children[i].type === 'JSXElement') {
               ++effective;
             }
@@ -65,7 +56,6 @@ export default class Generator {
         }
       },
     });
-    console.log('******90', generate(ast).code);
     return generate(ast).code;
   }
 
