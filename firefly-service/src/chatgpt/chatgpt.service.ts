@@ -90,29 +90,30 @@ export class ChatgptService {
       content: text,
       role: 'assistant',
     };
+
     if (typeText.includes('创建')) {
       const { content } = firstMessage;
       const fileName = this.fsHandler.extractFileName(content);
       const filePath = `src/pages/${fileName}/index.tsx`;
       this.pagePath = pathInstance.join(this.rootDir, filePath);
       this.currentChainId = id;
-      FsHandler.getInstance().createFile(
-        pathInstance.join(this.rootDir, filePath),
-        content,
-      );
-      const routerPath = pathInstance.join(
-        this.rootDir,
-        'src/routes/index.tsx',
-      );
-      const routerContent = Generator.getInstance().appendRouter(
-        FsHandler.getInstance().parseFile(routerPath),
-        `var data = {
-                path: '/${fileName}',
-                element: <${fileName} />,
-              }`,
-        `import ${fileName} from '../pages/${fileName}';`,
-      );
-      FsHandler.getInstance().writeFile(routerPath, routerContent, true);
+      // FsHandler.getInstance().createFile(
+      //   pathInstance.join(this.rootDir, filePath),
+      //   content,
+      // );
+      // const routerPath = pathInstance.join(
+      //   this.rootDir,
+      //   'src/routes/index.tsx',
+      // );
+      // const routerContent = Generator.getInstance().appendRouter(
+      //   FsHandler.getInstance().parseFile(routerPath),
+      //   `var data = {
+      //           path: '/${fileName}',
+      //           element: <${fileName} />,
+      //         }`,
+      //   `import ${fileName} from '../pages/${fileName}';`,
+      // );
+      // FsHandler.getInstance().writeFile(routerPath, routerContent, true);
       return {
         message: {
           role: 'assistant',

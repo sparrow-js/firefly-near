@@ -8,6 +8,7 @@ import * as prettier from 'prettier';
 import * as chokidar from 'chokidar';
 import * as fs from 'fs-extra';
 import * as Path from 'path';
+import { deleteNode } from '../react-markjsx';
 
 const watcherQueue = [];
 
@@ -26,12 +27,19 @@ export class EditService {
     };
   }
 
+  syncNodeIdMap(data: any): any {
+    console.log(data);
+  }
+
   moveNode(): any {
     console.log('moveNode');
   }
 
-  deleteNode(): any {
-    console.log('deleteNode');
+  deleteNode(data: { path: string; uid: string }): any {
+    const res = deleteNode(data.path, data.uid);
+    return {
+      status: 0,
+    };
   }
 
   replaceNode(): any {

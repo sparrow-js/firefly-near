@@ -27,10 +27,6 @@ export default class Generator {
       sourceType: 'module',
       plugins: ['jsx'],
     });
-    console.log(
-      '********123',
-      JSON.stringify(_.get(m, 'program.body'), null, 2),
-    );
 
     traverse(ast, {
       enter: ({ node }) => {

@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Post, Query, Body } from '@nestjs/common';
 import { EditService } from './edit.service';
 
 @Controller('edit')
@@ -10,6 +10,22 @@ export class EditController {
     console.log('*******9', query);
     this.editService.insertNode(query);
     return;
+  }
+
+  @Get('deleteNode')
+  deleteNode(@Query() query: any): any {
+    console.log('*******9', query);
+    this.editService.deleteNode(query);
+    return;
+  }
+
+  @Post('syncNodeIdMap')
+  syncNodeIdMap(
+    @Body()
+    data: any,
+  ): any {
+    this.editService.syncNodeIdMap(data);
+    return {};
   }
 
   @Get('watchProject')

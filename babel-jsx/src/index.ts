@@ -107,6 +107,7 @@ export default function transformLocatorJsComponents(babel: Babel): {
           if (state.filename.includes('node_modules')) {
             fileStorage = null;
           } else {
+
             fileStorage = {
               filePath: state.filename.replace(state.cwd, ''),
               projectPath: state.cwd,
@@ -114,6 +115,7 @@ export default function transformLocatorJsComponents(babel: Babel): {
               styledDefinitions: [],
               components: [],
             };
+            console.log('*********', path);
           }
 
           // NEED TO RUN MANUAL TRAVERSE, SO IT MAKE EDITS BEFORE ALL OTHER PLUGINS
