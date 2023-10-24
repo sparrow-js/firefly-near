@@ -16,8 +16,9 @@ import Store from './store';
 import FsHandler from '../generator/fshandler';
 
 const cacheTree = {};
-let alreadyExistingUIDs: Set<string> = new Set();
+const alreadyExistingUIDs: Map<string, any> = new Map();
 // factory.createJsxAttribute
+let jsxContainerList = [];
 
 function getFunctionJsx(functionNode: Node) {
   const jsxArr = [];
@@ -81,6 +82,9 @@ function setJsxElementUid(nodeList: Node[], sourceFile: TS.SourceFile) {
     const leaf = {
       uid: '',
     };
+    const alreadyExistingUIDsFile = alreadyExistingUIDs.get(
+      sourceFile.fileName,
+    );
     if (node.kind === TS.SyntaxKind.JsxElement) {
       const props = getAttributes(
         (node as any).openingElement.attributes,
@@ -91,8 +95,7 @@ function setJsxElementUid(nodeList: Node[], sourceFile: TS.SourceFile) {
         name: parseJSXElementName((node as any).openingElement, sourceFile),
         props,
       });
-
-      const uid = generateConsistentUID(hash, alreadyExistingUIDs);
+      const uid = generateConsistentUID(hash, alreadyExistingUIDsFile);
       leaf['uid'] = uid;
       leaf['tagName'] = (node as any).openingElement.tagName.getText(
         sourceFile,
@@ -101,7 +104,23 @@ function setJsxElementUid(nodeList: Node[], sourceFile: TS.SourceFile) {
       leaf['linkNode'] = node;
       leaf['parent'] = parentNode;
       leaf['position'] = index;
-      alreadyExistingUIDs.add(uid);
+      alreadyExistingUIDsFile.add(uid);
+      // appendUidAttribute(uid, (node as any).openingElement.attributes);
+    } else if (node.kind === TS.SyntaxKind.JsxSelfClosingElement) {
+      const props = getAttributes((node as any).attributes, sourceFile);
+      const hash = Hash({
+        fileName: sourceFile.fileName,
+        name: parseJSXElementName(node, sourceFile),
+        props,
+      });
+
+      const uid = generateConsistentUID(hash, alreadyExistingUIDsFile);
+      leaf['uid'] = uid;
+      leaf['tagName'] = (node as any).tagName.getText(sourceFile);
+      leaf['linkAttributes'] = (node as any).attributes;
+      leaf['linkNode'] = node;
+      alreadyExistingUIDsFile.add(uid);
+      // appendUidAttribute(uid, (node as any).attributes);
     } else {
       return null;
     }
@@ -129,6 +148,7 @@ function setJsxElementUid(nodeList: Node[], sourceFile: TS.SourceFile) {
 export function deleteNode(path: string, uid: string) {
   const res = transform(path);
   const { cacheTree, sourceFile } = res;
+  console.log('***********889', cacheTree[path]);
   const node = cacheTree[path][uid];
   const { parent, position } = node;
   parent.linkNode.children.splice(position, 1);
@@ -150,7 +170,7 @@ export function insertNode(data: any) {
 
   const code = `
 <p>
-  追加代码placeholder
+  追加代码
 </p>`;
   const tempSource = TS.createSourceFile(path, code, TS.ScriptTarget.ESNext);
   const { statements } = tempSource;
@@ -178,23 +198,99 @@ export function insertNode(data: any) {
   FsHandler.getInstance().writeFile(path, codeText, true);
 }
 
+function getJsx(functionNode: Node) {
+  const jsxArr: any[] = [];
+  // const node: Block = (functionNode as any).body;
+  function findJsx(node: Node) {
+    if (!node) return;
+    if (node.kind === TS.SyntaxKind.Block) {
+      const { statements } = node as Block;
+      statements.forEach((stateNode) => {
+        findJsx(stateNode);
+      });
+    } else if (
+      node.kind === TS.SyntaxKind.ReturnStatement ||
+      node.kind === TS.SyntaxKind.ParenthesizedExpression
+    ) {
+      const { expression } = node as any;
+      if (expression) findJsx(expression);
+    } else if (node.kind === TS.SyntaxKind.JsxElement) {
+      jsxArr.push(node);
+    }
+  }
+  findJsx(functionNode);
+  return jsxArr;
+}
+
+function parseArrowFunction(initializer, escapedText) {
+  const {
+    body: { statements },
+  } = initializer;
+  Array.isArray(statements) &&
+    statements.forEach((node) => {
+      if (node.kind === TS.SyntaxKind.ReturnStatement) {
+        const jsx = getJsx(node);
+        jsxContainerList.push(...jsx);
+      }
+    });
+}
+
+function parseVariableDeclarationList(declarations) {
+  for (let i = 0; i < declarations.length; i++) {
+    const { initializer, name } = declarations[i];
+    if (initializer.kind === TS.SyntaxKind.ArrowFunction) {
+      parseArrowFunction(initializer, name.escapedText);
+    }
+  }
+}
+
+function findJsxNode(node: any) {
+  jsxContainerList = [];
+  const dfs = function (node: any) {
+    if (!node) return;
+    if (node.kind === TS.SyntaxKind.JsxElement) {
+      // jsxContainerMap[] = node;
+      return;
+    }
+    if (node.kind === TS.SyntaxKind.VariableStatement) {
+      if (node.declarationList && node.declarationList.declarations) {
+        parseVariableDeclarationList(node.declarationList.declarations);
+      }
+    }
+    const { children } = node as any;
+    children &&
+      children.forEach((cur) => {
+        dfs(cur);
+      });
+  };
+  const child = node.getChildren();
+  child.forEach((item) => {
+    dfs(item);
+  });
+  return jsxContainerList;
+}
+
 export default function transform(path: string) {
-  alreadyExistingUIDs = new Set();
+  alreadyExistingUIDs.set(path, new Set());
+  let code = FsHandler.getInstance().readFileSync(path);
   let sourceFile = null;
-  const code = FsHandler.getInstance().parseFile(path);
-  if (path.includes('/src/') && path.includes('.ts')) {
-    console.log('file path', createSourceFile);
+  if (path.includes('/src/pages') && path.includes('tsx')) {
     sourceFile = TS.createSourceFile(path, code, TS.ScriptTarget.ESNext);
     const nodeObject = sourceFile.getChildren()[0];
-    if (nodeObject) {
-      const nodeList = nodeObject.getChildren();
-      nodeList.forEach((node: Node) => {
-        if (node.kind === TS.SyntaxKind.FunctionDeclaration) {
-          const jsxNodeList = getFunctionJsx(node);
-          const cacheJsx = setJsxElementUid(jsxNodeList, sourceFile);
-          cacheTree[path] = cacheJsx;
-        }
-      });
+    findJsxNode(nodeObject);
+    const cacheJsx = setJsxElementUid(jsxContainerList, sourceFile);
+    // const oldParse = cacheTree[path] || null;
+    // fixParseSuccessUIDs(oldParse, cacheJsx);
+    console.log('********', cacheJsx);
+    cacheTree[path] = cacheJsx;
+    const uidMap = Store.getInstance().getOldUidToOriginUid();
+    // syncNodeIdMap({
+    //   uidMap,
+    // });
+    const printer = TS.createPrinter();
+    code = printer.printNode(TS.EmitHint.Unspecified, sourceFile, sourceFile);
+    if (path.includes('/dashboard/index')) {
+      console.log(code);
     }
   }
   return {
