@@ -1,0 +1,139 @@
+@import '~@alifd/next/lib/core/style/_global.scss';
+@import '~@alifd/next/lib/core/style/_motion.scss';
+@import 'scss/variable';
+
+#{$menu-btn-prefix} {
+  display: inline-block;
+  box-shadow: none;
+
+  &-spacing-tb {
+    margin: $popup-spacing-tb 0;
+  }
+
+  &-popup {
+    box-shadow: 0 $s-1 $s-4 0 rgba(0, 0, 0, 0.1);
+    border-radius: $corner-1;
+
+    .pro-layout-menu.pro-layout-ver {
+      border: none;
+      max-height: 272px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: $s-2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        border-radius: 9999px;
+        background-color: $color-fill1-1;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    }
+  }
+
+  .pro-layout-icon {
+    transition: transform $motion-duration-immediately $motion-linear;
+  }
+
+  .pro-layout-menu-btn-arrow::before {
+    content: $menu-btn-fold-icon-content;
+  }
+
+  &.pro-layout-expand .pro-layout-btn-icon.pro-layout-menu-btn-arrow {
+    transform: rotate(180deg);
+  }
+  // --------- this is for config platform
+  &-symbol-unfold::before {
+    content: $menu-btn-unfold-icon-content;
+  }
+  // --------- this is for config platform
+
+  &.pro-layout-btn-normal {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-pure-text-normal-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-pure-normal-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-secondary {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-pure-text-secondary-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-pure-secondary-color-hover;
+    }
+    &.pro-layout-btn-text:hover .pro-layout-menu-btn-arrow {
+      color: $btn-text-secondary-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-primary {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-pure-text-primary-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-pure-primary-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-text.pro-layout-btn-normal {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-text-text-normal-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-text-normal-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-text.pro-layout-btn-primary {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-text-text-primary-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-text-primary-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-ghost.pro-layout-btn-light {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-ghost-light-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-ghost-light-color-hover;
+    }
+  }
+
+  &.pro-layout-btn-ghost.pro-layout-btn-dark {
+    .pro-layout-menu-btn-arrow {
+      color: $menu-btn-ghost-dark-icon-color;
+    }
+    &:hover .pro-layout-menu-btn-arrow {
+      color: $btn-ghost-dark-color-hover;
+    }
+  }
+
+  &.disabled .pro-layout-menu-btn-arrow,
+  &[disabled] .pro-layout-menu-btn-arrow {
+    color: $menu-btn-disabled-icon-color;
+  }
+
+  &.pro-layout-btn-text.disabled .pro-layout-menu-btn-arrow,
+  &.pro-layout-btn-text[disabled] .pro-layout-menu-btn-arrow {
+    color: $menu-btn-disabled-icon-color;
+  }
+
+  &[disabled].pro-layout-btn-ghost.pro-layout-btn-dark .pro-layout-menu-btn-arrow {
+    color: $menu-btn-ghost-dark-disabled-icon-color;
+  }
+
+  &[disabled].pro-layout-btn-ghost.pro-layout-btn-light .pro-layout-menu-btn-arrow {
+    color: $menu-btn-ghost-light-disabled-icon-color;
+  }
+}

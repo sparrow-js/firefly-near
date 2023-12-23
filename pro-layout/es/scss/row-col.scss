@@ -1,0 +1,60 @@
+#{$biz-css-prefix}row {
+  // as children
+  flex: 1 1 auto;
+  // as parent
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch; // 不开放配置,保证高度撑满
+  &:first-child {
+    margin-top: 0 !important; // 使用margin-top控制row之间的间距,强制第一行0
+  }
+}
+
+#{$biz-css-prefix}col {
+  // as children
+  overflow: auto;
+  word-break: break-all; // 避免连续英文不换行,正常情况下应该不会遇到
+  // as parent
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start; // 仅开放垂直方向的对齐配置
+  align-items: stretch; // 不开放配置
+  &:first-child {
+    margin-left: 0 !important; // 使用margin-left控制col之间的间距,强制第一列0
+  }
+}
+
+// grid实现
+// #{$biz-css-prefix}row {
+//   // as children
+//   grid-row-start: span 1;
+//   // as parent
+//   display: grid;
+//   grid-auto-flow: column;
+//   grid-auto-columns: 1fr;
+//   justify-items: stretch;
+//   align-items: stretch;
+//   justify-content: stretch;
+//   align-content: stretch;
+
+//   /*debug*/
+//   background: rgba(0, 0, 255, .1);
+// }
+
+// #{$biz-css-prefix}column {
+//   // as children
+//   grid-column-start: span 1;
+//   // as parent
+//   display: grid;
+//   grid-auto-flow: row;
+//   justify-items: stretch;
+//   align-items: stretch;
+//   justify-content: stretch;
+//   align-content: stretch;
+
+//   /*debug*/
+//   outline: 1px dashed rgba(255, 0, 0, .5);
+//   outline-offset: -1px;
+// }

@@ -1,0 +1,116 @@
+@import '../../../scss/variable';
+
+$pro-layout-card-header-padding-t: $s-5;
+$pro-layout-card-header-padding-l: $s-5;
+$pro-layout-card-header-padding-t-s: $s-3;
+
+.pro-layout-card-header-padding {
+  padding-bottom: $s-4;
+}
+
+.pro-layout-card-header {
+  &__content {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: $pro-layout-card-header-padding-t $pro-layout-card-header-padding-l 0
+      $pro-layout-card-header-padding-l;
+    // border-left: $size-base transparent solid;
+    border-radius: $corner-2;
+  }
+
+  &--collapsed {
+    cursor: pointer;
+    border-color: $color-brand1-1;
+    padding-bottom: $pro-layout-card-header-padding-t;
+    &:hover {
+      background-color: $color-fill1-2;
+    }
+    .pro-layout-card-header__action-bar {
+      display: none;
+    }
+  }
+
+  &__hd {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: $s-2;
+  }
+
+  &__ft {
+    flex: 1;
+    display: flex;
+    gap: $s-2;
+    justify-content: flex-end;
+    align-items: center;
+
+    & > .vertical-divider {
+      width: 1px;
+      height: 16px;
+      background-color: $color-line1-2;
+    }
+  }
+
+  &__desc {
+    color: $color-text1-3;
+    padding: 0 $pro-layout-card-header-padding-l;
+  }
+
+  &__title {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    line-height: 22px;
+    font-size: $font-size-subhead;
+    font-weight: $font-weight-semi-bold;
+    color: $color-text1-4;
+  }
+  &__tooltip {
+    margin-top: -1px;
+    color: $color-text1-1;
+  }
+
+  &__action-bar {
+    display: flex;
+    gap: $s-2;
+    justify-content: flex-end;
+  }
+  &__collapse-btn {
+    user-select: none;
+    & > .pro-layout-icon {
+      transition: transform 0.1s ease-in-out;
+      color: $color-line1-4 !important;
+    }
+    &--collapsed {
+      & > .pro-layout-icon {
+        color: $color-brand1-6 !important;
+        transform-origin: center;
+        transform: rotate(-180deg) !important;
+      }
+    }
+    &:hover {
+      & > .pro-layout-icon {
+        color: $color-brand1-6 !important;
+      }
+    }
+  }
+}
+
+.pro-layout-card-header__divider {
+  height: 1px;
+  border-bottom: 1px solid $color-line1-1;
+  margin-top: $pro-layout-card-header-padding-t;
+}
+
+.has-description {
+  .pro-layout-card-header__content {
+    padding-top: $pro-layout-card-header-padding-t-s;
+  }
+  .pro-layout-card-header__divider {
+    margin-top: $pro-layout-card-header-padding-t-s;
+  }
+}

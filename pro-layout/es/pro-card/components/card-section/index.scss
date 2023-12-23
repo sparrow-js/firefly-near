@@ -1,0 +1,125 @@
+$pro-layout-card-padding: $size-base * 5;
+$pro-layout-card-header-padding: $pro-layout-card-padding;
+$pro-layout-card-section-padding: $pro-layout-card-padding;
+
+.pro-layout-card-section {
+  // padding-bottom: $pro-layout-card-section-padding;
+  box-sizing: border-box;
+  border: 0 solid $color-line1-1;
+  align-self: stretch;
+}
+
+.pro-layout-card-section-header__divider {
+  height: 1px;
+  border-bottom: 1px solid $color-line1-1;
+}
+.pro-layout-card-section-header + .pro-layout-card-section-header__divider {
+  margin-top: $s-4;
+}
+
+.pro-layout-card-section-footer__divider {
+  height: 1px;
+  border-bottom: 1px solid $color-line1-1;
+  margin-top: $s-5;
+}
+
+.pro-layout-section-divider-indent {
+  margin-left: $s-5;
+  margin-right: $s-5;
+}
+
+.pro-layout-card-section-header {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: $s-4 $s-5;
+  padding-bottom: 0;
+
+  &__hd {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: $size-base * 2;
+  }
+
+  &__ft {
+    flex: 1;
+    display: flex;
+    gap: $size-base * 2;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semi-bold;
+    color: $color-text1-3;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 13px;
+      width: 3px;
+      opacity: 0.8;
+      background: $color-brand1-6;
+      border-radius: 2px;
+      margin-right: 8px;
+    }
+    &.pro-layout-card-section-header-noBullet::before {
+      display: none;
+    }
+  }
+  &__tooltip {
+    color: $color-text1-1;
+  }
+
+  &__action-bar {
+    display: flex;
+    gap: $size-base * 2;
+    justify-content: flex-end;
+  }
+}
+
+.pro-layout-card-section-body {
+  padding: $pro-layout-card-section-padding $pro-layout-card-section-padding 0;
+}
+
+.pro-layout-card-body__panel--flow > .pro-layout-card-section,
+.pro-layout-card-body__panel--flow
+  > .pro-layout-row-col-container
+  > .pro-layout-row
+  > .pro-layout-col
+  > .pro-layout-card-section {
+  // margin: 0 ($pro-layout-card-padding * -1);
+
+  &--segment-line {
+    &:first-child {
+      border-top: none;
+    }
+  }
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.pro-layout-card-body__panel--grid > .pro-layout-grid {
+  margin: 0 ($pro-layout-card-padding * -1 - 1px) ($pro-layout-card-padding * -1)
+    ($pro-layout-card-padding * -1);
+  & > .pro-layout-card-section {
+    &--segment-line {
+      border-right-width: 1px;
+    }
+    .pro-layout-card-section-header__title::before {
+      display: none;
+    }
+  }
+}

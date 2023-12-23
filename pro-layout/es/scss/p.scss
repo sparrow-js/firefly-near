@@ -1,0 +1,431 @@
+#{$biz-css-prefix}p {
+  min-height: 12px;
+  font-family: var(--font-family);
+
+  &-no-text-space {
+    #{$biz-css-prefix}text + #{$biz-css-prefix}text {
+      margin-left: 0;
+    }
+  }
+
+  &-flex {
+    display: flex;
+  }
+
+  &-align-left {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  &-align-center {
+    text-align: center;
+    justify-content: center;
+  }
+
+  &-align-right {
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  &-align-space-evenly {
+    justify-content: space-evenly;
+  }
+
+  &-align-space-between {
+    justify-content: space-between;
+  }
+
+  &-align-space-around {
+    justify-content: space-around;
+  }
+
+  &-veralign-top,
+  &-veralign-top > * {
+    align-items: flex-start;
+    vertical-align: top;
+  }
+
+  &-veralign-center,
+  &-veralign-center > *,
+  &-veralign-middle,
+  &-veralign-middle > * {
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  &-veralign-baseline,
+  &-veralign-baseline > * {
+    align-items: baseline;
+    vertical-align: baseline;
+  }
+
+  &-veralign-bottom,
+  &-veralign-bottom > * {
+    align-items: flex-end;
+    vertical-align: bottom;
+  }
+
+  &-align-full {
+    display: block;
+
+    #{$biz-css-prefix}p-cell {
+      display: block;
+    }
+    & > * {
+      width: 100%;
+    }
+    // display: flex;
+    // align-items: stretch;
+    // flex-direction: column;
+
+    &#{$biz-css-prefix}p-overline > *,
+    #{$biz-css-prefix}p-cell-overline > *,
+    &#{$biz-css-prefix}p-caption > *,
+    #{$biz-css-prefix}p-cell-caption > *,
+    &#{$biz-css-prefix}p-body1 > *,
+    #{$biz-css-prefix}p-cell-body1 > *,
+    &#{$biz-css-prefix}p-body2 > *,
+    #{$biz-css-prefix}p-cell-body2 > *,
+    &#{$biz-css-prefix}p-h6 > *,
+    #{$biz-css-prefix}p-cell-h6 > *,
+    &#{$biz-css-prefix}p-h5 > *,
+    #{$biz-css-prefix}p-cell-h5 > *,
+    &#{$biz-css-prefix}p-h4 > *,
+    #{$biz-css-prefix}p-cell-h4 > *,
+    &#{$biz-css-prefix}p-h3 > *,
+    #{$biz-css-prefix}p-cell-h3 > *,
+    &#{$biz-css-prefix}p-h2 > *,
+    #{$biz-css-prefix}p-cell-h2 > *,
+    &#{$biz-css-prefix}p-h2 > *,
+    #{$biz-css-prefix}p-cell-h2 > * {
+      margin-left: 0;
+    }
+  }
+
+  // < caption 都用 caption 间距
+  &-overline > *,
+  &-cell-overline > *,
+  &-caption > *,
+  &-cell-caption > * {
+    margin-left: var(--box-container-small-spacing);
+    margin-top: var(--box-container-small-margin-top);
+    margin-bottom: var(--box-container-small-margin-bottom);
+  }
+
+  &-body2 > *,
+  &-cell-body2 > * {
+    margin-left: var(--box-container-medium-spacing);
+    margin-top: var(--box-container-medium-margin-top);
+    margin-bottom: var(--box-container-medium-margin-bottom);
+  }
+
+  // > body2 都用 body2 间距
+  &-body1 > *,
+  &-cell-body1 > *,
+  &-h6 > *,
+  &-cell-h6 > *,
+  &-h5 > *,
+  &-cell-h5 > *,
+  &-h4 > *,
+  &-cell-h4 > *,
+  &-h3 > *,
+  &-cell-h3 > *,
+  &-h2 > *,
+  &-cell-h2 > *,
+  &-h1 > *,
+  &-cell-h1 > * {
+    margin-left: var(--box-container-large-spacing);
+    margin-top: var(--box-container-large-margin-top);
+    margin-bottom: var(--box-container-large-margin-bottom);
+  }
+
+  &-overline {
+    font-size: var(--p-overline-font-size);
+    font-weight: var(--p-overline-font-weight);
+    line-height: var(--p-overline-line-height);
+    // margin-top: var(--p-overline-margin-top);
+    // margin-bottom: var(--p-overline-margin-bottom);
+  }
+
+  // P + P 之间的上下间距
+  &-caption {
+    font-size: var(--p-caption-font-size);
+    font-weight: var(--p-caption-font-weight);
+    line-height: var(--p-caption-line-height);
+    // margin-top: var(--p-caption-margin-top);
+    // margin-bottom: var(--p-caption-margin-bottom);
+  }
+
+  &-body2 {
+    font-size: var(--p-body2-font-size);
+    font-weight: var(--p-body2-font-weight);
+    line-height: var(--p-body2-line-height);
+    // margin-top: var(--p-body2-margin-top);
+    // margin-bottom: var(--p-body2-margin-bottom);
+  }
+
+  &-body1 {
+    font-size: var(--p-body1-font-size);
+    font-weight: var(--p-body1-font-weight);
+    line-height: var(--p-body1-line-height);
+    // margin-top: var(--p-body1-margin-top);
+    // margin-bottom: var(--p-body1-margin-bottom);
+  }
+
+  &-h6 {
+    font-size: var(--p-h6-font-size);
+    font-weight: var(--p-h6-font-weight);
+    line-height: var(--p-h6-line-height);
+    // margin-top: var(--p-h6-margin-top);
+    // margin-bottom: var(--p-h6-margin-bottom);
+  }
+
+  &-h5 {
+    font-size: var(--p-h5-font-size);
+    font-weight: var(--p-h5-font-weight);
+    line-height: var(--p-h5-line-height);
+    // margin-top: var(--p-h5-margin-top);
+    // margin-bottom: var(--p-h5-margin-bottom);
+  }
+
+  &-h4 {
+    font-size: var(--p-h4-font-size);
+    font-weight: var(--p-h4-font-weight);
+    line-height: var(--p-h4-line-height);
+    // margin-top: var(--p-h4-margin-top);
+    // margin-bottom: var(--p-h4-margin-bottom);
+  }
+
+  &-h3 {
+    font-size: var(--p-h3-font-size);
+    font-weight: var(--p-h3-font-weight);
+    line-height: var(--p-h3-line-height);
+    // margin-top: var(--p-h3-margin-top);
+    // margin-bottom: var(--p-h3-margin-bottom);
+  }
+
+  &-h2 {
+    font-size: var(--p-h2-font-size);
+    font-weight: var(--p-h2-font-weight);
+    line-height: var(--p-h2-line-height);
+    // margin-top: var(--p-h2-margin-top);
+    // margin-bottom: var(--p-h2-margin-bottom);
+  }
+
+  &-h1 {
+    font-size: var(--p-h1-font-size);
+    font-weight: var(--p-h1-font-weight);
+    line-height: var(--p-h1-line-height);
+    // margin-top: var(--p-h1-margin-top);
+    // margin-bottom: var(--p-h1-margin-bottom);
+  }
+
+  // 第一个 P 元素去除 margin-top
+  &:first-child {
+    margin-top: 0;
+  }
+
+  // 最后一个 P 元素去除 margin-bottom
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // P 的最后一个 child 去除 margin-right
+  > *:first-child,
+  &-cell > *:first-child {
+    margin-left: 0;
+  }
+
+  & > #{$biz-css-prefix}card-section {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &-cell {
+    display: flex;
+
+    &#{$biz-css-prefix}p-block {
+      display: block;
+    }
+  }
+
+  &-cell-hoz {
+    flex-direction: row;
+
+    &#{$biz-css-prefix}p-cell-align-inherit {
+      justify-content: inherit;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-inherit {
+      align-items: inherit;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-left {
+      justify-content: flex-start;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-right {
+      justify-content: flex-end;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-center {
+      justify-content: center;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-top {
+      align-items: flex-start;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-middle {
+      align-items: center;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-baseline {
+      align-items: baseline;
+    }
+    &#{$biz-css-prefix}p-cell-veralign-bottom {
+      align-items: flex-end;
+    }
+  }
+
+  &-cell-ver {
+    flex-direction: column;
+    & > * {
+      margin: 0;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-inherit {
+      justify-content: inherit;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-inherit {
+      align-items: inherit;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-left {
+      align-items: flex-start;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-right {
+      align-items: flex-end;
+    }
+
+    &#{$biz-css-prefix}p-cell-align-center {
+      align-items: center;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-top {
+      justify-content: flex-start;
+    }
+
+    &#{$biz-css-prefix}p-cell-veralign-middle {
+      justify-content: center;
+    }
+    &#{$biz-css-prefix}p-cell-veralign-end {
+      justify-content: flex-end;
+    }
+  }
+
+  > #{$biz-css-prefix}p-cell {
+    // margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  // 文本、tag、icon都属于文字类元素，不应该有上下间距
+  > #{$biz-css-prefix}icon,
+  &-cell > #{$biz-css-prefix}icon,
+  > #{$biz-css-prefix}tag,
+  &-cell > #{$biz-css-prefix}tag,
+  > #{$biz-css-prefix}text,
+  &-cell > #{$biz-css-prefix}text {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  > br + *,
+  &-cell > br + * {
+    margin-left: 0;
+  }
+
+  &-block {
+    display: block;
+  }
+}
+
+#{$biz-css-prefix}text {
+  &-inherit {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  &-overline {
+    font-family: var(--p-overline-font-family);
+    font-size: var(--p-overline-font-size);
+    font-weight: var(--p-overline-font-weight);
+    line-height: var(--p-overline-line-height);
+  }
+
+  &-caption {
+    font-family: var(--p-caption-font-family);
+    font-size: var(--p-caption-font-size);
+    font-weight: var(--p-caption-font-weight);
+    line-height: var(--p-caption-line-height);
+  }
+
+  &-body2 {
+    font-family: var(--p-body2-font-family);
+    font-size: var(--p-body2-font-size);
+    font-weight: var(--p-body2-font-weight);
+    line-height: var(--p-body2-line-height);
+  }
+
+  &-body1 {
+    font-family: var(--p-body1-font-family);
+    font-size: var(--p-body1-font-size);
+    font-weight: var(--p-body1-font-weight);
+    line-height: var(--p-body1-line-height);
+  }
+
+  &-h6 {
+    font-family: var(--p-h6-font-family);
+    font-size: var(--p-h6-font-size);
+    font-weight: var(--p-h6-font-weight);
+    line-height: var(--p-h6-line-height);
+  }
+
+  &-h5 {
+    font-family: var(--p-h5-font-family);
+    font-size: var(--p-h5-font-size);
+    font-weight: var(--p-h5-font-weight);
+    line-height: var(--p-h5-line-height);
+  }
+
+  &-h4 {
+    font-family: var(--p-h4-font-family);
+    font-size: var(--p-h4-font-size);
+    font-weight: var(--p-h4-font-weight);
+    line-height: var(--p-h4-line-height);
+  }
+
+  &-h3 {
+    font-family: var(--p-h3-font-family);
+    font-size: var(--p-h3-font-size);
+    font-weight: var(--p-h3-font-weight);
+    line-height: var(--p-h3-line-height);
+  }
+
+  &-h2 {
+    font-family: var(--p-h2-font-family);
+    font-size: var(--p-h2-font-size);
+    font-weight: var(--p-h2-font-weight);
+    line-height: var(--p-h2-line-height);
+  }
+
+  &-h1 {
+    font-family: var(--p-h1-font-family);
+    font-size: var(--p-h1-font-size);
+    font-weight: var(--p-h1-font-weight);
+    line-height: var(--p-h1-line-height);
+  }
+}

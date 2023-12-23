@@ -1,0 +1,185 @@
+/* @import '~@alifd/next/variable.css'; */
+/* 需要删掉下面的root代码，只保留第一行引入 */
+// $css-prefix: '.next-';
+
+@import '~@alifd/next/variables.scss';
+$biz-css-prefix: '.pro-layout-';
+
+:root {
+  --color-surface: #fff;
+  --color-lining: #f0f2f5;
+
+  --s-base: 4px;
+  --s-compact: calc(var(--s-base) * 50);
+  --s-comfortable: calc(var(--s-base) * 80);
+  --s-luxury: calc(var(--s-base) * 160);
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 28px;
+  --s-8: 32px;
+  --s-9: 36px;
+  --s-10: 40px;
+  --line-zero: 0;
+  --line-1: 1px;
+  --line-2: 2px;
+  --line-3: 3px;
+  --color-line1-1: #e6e7eb;
+
+  /* corner */
+
+  --corner-zero: 0;
+  --corner-1: 4px;
+  --corner-2: 8px;
+  --corner-3: 16px;
+  --corner-circle: 50%;
+
+  /* box */
+  --box-container-large-min-width: var(--s-4);
+  --box-container-large-min-height: var(--s-12);
+  --box-container-large-border-width: var(--line-1);
+  --box-container-large-border-radius: var(--corner-1);
+  --box-container-large-padding: var(--s-2) var(--s-4);
+  --box-container-large-spacing: var(--s-4);
+  --box-container-large-margin-top: var(--s-2);
+  --box-container-large-margin-bottom: var(--s-2);
+
+  --box-container-medium-min-width: var(--s-6);
+  --box-container-medium-min-height: var(--s-8);
+  --box-container-medium-border-width: var(--line-1);
+  --box-container-medium-border-radius: var(--corner-1);
+  --box-container-medium-padding: var(--s-1) var(--s-2);
+  --box-container-medium-spacing: var(--s-2);
+  --box-container-medium-margin-top: var(--s-1);
+  --box-container-medium-margin-bottom: var(--s-1);
+
+  --box-container-small-min-width: var(--s-6);
+  --box-container-small-min-height: var(--s-6);
+  --box-container-small-border-width: var(--line-1);
+  --box-container-small-border-radius: var(--corner-1);
+  --box-container-small-padding: var(--s-1) var(--s-2);
+  --box-container-small-spacing: var(--s-2);
+  --box-container-small-margin-top: var(--s-1);
+  --box-container-small-margin-bottom: var(--s-1);
+
+  /* block */
+  --block-padding: var(--s-4);
+  --block-border-width: var(--line-1);
+  --block-border-radius: var(--corner-2);
+  --block-border-color: var(--color-line1-1);
+
+  /* page */
+  --page-columns: repeat(12, minmax(0px, 1fr));
+  // --page-padding: var(--s-4) var(--s-4);
+  // --grid-gutter-column: var(--s-3);
+  // --grid-gutter-row: var(--s-3);
+  --page-padding-hoz: calc(var(--s-base) * 5);
+  --page-padding-ver: calc(var(--s-base) * 5);
+  --page-header-padding-hoz: var(--page-padding-hoz);
+  --page-header-padding-ver: var(--page-padding-ver);
+  --page-footer-padding-hoz: var(--page-padding-hoz);
+  --page-footer-padding-ver: var(--page-padding-ver);
+  --page-gutter-column: calc(var(--s-base) * 5);
+  --page-gutter-row: calc(var(--s-base) * 5);
+  --page-min-width: 1024px;
+  --page-max-width: 1440px;
+
+  /* font */
+  --font-family: Roboto, 'Helvetica Neue', Helvetica, Tahoma, Arial, 'PingFang SC',
+    'Microsoft YaHei';
+
+  /* paragraph */
+  --p-gutter-column: var(--s-2);
+  --p-gutter-row: var(--s-2);
+
+  --p-h1-font-size: 56px;
+  --p-h1-icon-size: 56px;
+  --p-h1-font-weight: 900;
+  --p-h1-line-height: 64px;
+  --p-h1-margin-top: var(--s-9);
+  --p-h1-margin-bottom: var(--s-1);
+
+  --p-h2-font-size: 48px;
+  --p-h2-icon-size: 48px;
+  --p-h2-font-weight: 800;
+  --p-h2-line-height: 52px;
+  --p-h2-margin-top: var(--s-8);
+  --p-h2-margin-bottom: var(--s-1);
+
+  --p-h3-font-size: 36px;
+  --p-h3-icon-size: 36px;
+  --p-h3-font-weight: 700;
+  --p-h3-line-height: 44px;
+  --p-h3-margin-top: var(--s-7);
+  --p-h3-margin-bottom: var(--s-1);
+
+  --p-h4-font-size: 24px;
+  --p-h4-icon-size: 24px;
+  --p-h4-font-weight: 600;
+  --p-h4-line-height: 32px;
+  --p-h4-margin-top: var(--s-5);
+  --p-h4-margin-bottom: var(--s-2);
+
+  --p-h5-font-size: 20px;
+  --p-h5-icon-size: 20px;
+  --p-h5-font-weight: 500;
+  --p-h5-line-height: 28px;
+  --p-h5-margin-top: var(--s-4); // 上下不一定相等
+  --p-h5-margin-bottom: var(--s-1);
+
+  /* large */
+  --p-h6-font-size: 16px;
+  --p-h6-icon-size: 16px;
+  --p-h6-font-weight: 400;
+  --p-h6-line-height: 24px;
+  --p-h6-margin-top: var(--s-4);
+  --p-h6-margin-bottom: var(--s-1);
+
+  --p-body1-font-size: 16px;
+  --p-body1-icon-size: 16px;
+  --p-body1-font-weight: 400;
+  --p-body1-line-height: 24px;
+  --p-body1-margin-top: var(--s-3);
+  --p-body1-margin-bottom: var(--s-1);
+  --p-body1-indent-size: var(--s-2);
+
+  /* medium */
+  --p-body2-font-size: 14px;
+  --p-body2-icon-size: 14px;
+  --p-body2-font-weight: 400;
+  --p-body2-line-height: 22px;
+  --p-body2-margin-top: var(--s-2);
+  --p-body2-margin-bottom: var(--s-1);
+  --p-body2-indent-size: var(--s-2);
+
+  /* small */
+  --p-caption-font-size: 12px;
+  --p-caption-icon-size: 12px;
+  --p-caption-font-weight: 300;
+  --p-caption-line-height: 20px;
+  --p-caption-margin-top: var(--s-3);
+  --p-caption-margin-bottom: var(--s-1);
+  --p-caption-indent-size: var(--s-1);
+
+  --p-overline-font-size: 10px;
+  --p-overline-icon-size: 10px;
+  --p-overline-font-weight: 200;
+  --p-overline-line-height: 18px;
+  --p-overline-margin-top: var(--s-1);
+  --p-overline-margin-bottom: var(--s-1);
+}
+
+body {
+  --p-h1-margin-top: var(--s-1);
+  --p-h2-margin-top: var(--s-1);
+  --p-h3-margin-top: var(--s-1);
+  --p-h4-margin-top: var(--s-1);
+  --p-h5-margin-top: var(--s-1);
+  --p-h6-margin-top: var(--s-1);
+  --p-body1-margin-top: var(--s-1);
+  --p-body2-margin-top: var(--s-1);
+  --p-caption-margin-top: var(--s-1);
+}

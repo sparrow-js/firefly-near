@@ -1,0 +1,112 @@
+{
+  "_from": "@alifd/pro-layout",
+  "_id": "@alifd/pro-layout@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-OFy359rEoLt/JgxeQnRdBcxIodn+c5+D1U+UaNh9dbbYH+ggU5UeyI+iNF6h/cLniocz5azKNLIWTECh+7Z+CA==",
+  "_location": "/@alifd/pro-layout",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@alifd/pro-layout",
+    "name": "@alifd/pro-layout",
+    "escapedName": "@alifd%2fpro-layout",
+    "scope": "@alifd",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@alifd/pro-layout/-/pro-layout-1.0.1.tgz",
+  "_shasum": "3d76e1ca553a26296bcac04516c9f925359fad3b",
+  "_spec": "@alifd/pro-layout",
+  "_where": "/Users/haitaowu/lab/my-app",
+  "betaVersion": "1.0.1-beta.4",
+  "bundleDependencies": false,
+  "componentConfig": {
+    "name": "ProLayout",
+    "title": "自然布局",
+    "category": "Information",
+    "materialSchema": "https://alifd.alicdn.com/npm/@alifd/pro-layout@1.0.1/build/lowcode/assets-prod.json"
+  },
+  "dependencies": {
+    "@alifd/next": "^1.25.7",
+    "classnames": "^2.3.1",
+    "lodash.omit": "^4.5.0",
+    "prop-types": "^15.5.8",
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "deprecated": false,
+  "description": "@alifd/pro-layout",
+  "devDependencies": {
+    "@alib/build-scripts": "^0.1.3",
+    "@alifd/build-plugin-lowcode": "^0.1.16-beta.0",
+    "@alifd/next": "1.x",
+    "@iceworks/spec": "^1.0.0",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "build-plugin-component": "^1.0.0",
+    "build-plugin-fusion": "^0.1.0",
+    "build-plugin-moment-locales": "^0.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "f2elint": "^1.2.0",
+    "iceworks": "^3.4.5",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "files": [
+    "demo/",
+    "es/",
+    "lib/",
+    "build/",
+    "dist/",
+    "lowcode/"
+  ],
+  "homepage": "https://unpkg.com/@alifd/pro-layout@1.0.1/build/index.html",
+  "husky": {
+    "hooks": {
+      "pre-commit": "f2elint commit-file-scan",
+      "commit-msg": "f2elint commit-msg-scan"
+    }
+  },
+  "keywords": [
+    "ice",
+    "react",
+    "component"
+  ],
+  "license": "MIT",
+  "lowcodeEditMain": "build/lowcode/view.js",
+  "main": "lib/index.js",
+  "materialConfig": {
+    "fusion-site": {}
+  },
+  "module": "es/index.js",
+  "name": "@alifd/pro-layout",
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "@alifd/next": "1.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "build-scripts build",
+    "eslint": "eslint --cache --ext .js,.jsx ./",
+    "eslint:fix": "npm run eslint -- --fix",
+    "f2elint-fix": "f2elint fix",
+    "f2elint-scan": "f2elint scan",
+    "lint": "npm run eslint && npm run stylelint",
+    "lowcode:build": "build-scripts build --config ./build.lowcode.js",
+    "lowcode:dev": "build-scripts start --config ./build.lowcode.js",
+    "prepublishOnly": "npm run build && npm run lowcode:build",
+    "start": "build-scripts start",
+    "stylelint": "stylelint \"**/*.{css,scss,less}\"",
+    "test": "build-scripts test"
+  },
+  "stylePath": "style.js",
+  "version": "1.0.1"
+}

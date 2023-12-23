@@ -1,0 +1,28 @@
+@import './theme-dark.scss';
+
+.pro-layout-toggle-icon-group {
+  display: flex;
+  gap: $s-1;
+  background-color: $color-fill1-2;
+  border-radius: $s-1;
+  padding: 2px $s-2;
+}
+
+.pro-layout-toggle-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: $s-7;
+  height: $s-7;
+  border-radius: $corner-2;
+  background-color: $color-fill1-2;
+  &:hover {
+    background-color: #e6e8eb;
+    color: $color-brand1-6;
+  }
+  &--active {
+    color: $color-brand1-6;
+  }
+}

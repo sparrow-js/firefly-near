@@ -1,0 +1,27 @@
+body.dark {
+  .pro-layout-card {
+    background-color: $color-fill1-1;
+    &-header {
+      &__title {
+        color: $color-text1-4;
+      }
+    }
+    &-body {
+      color: $color-text1-3;
+    }
+    &-header {
+      &--collapsed {
+        border-color: $color-brand1-6;
+        &:hover {
+          background-color: $color-fill1-1;
+        }
+      }
+    }
+    .pro-layout-card-grid > .pro-layout-card-section {
+      background-color: $color-fill1-1;
+    }
+    .pro-layout-card-section-header__title::before {
+      background: $color-brand1-6;
+    }
+  }
+}

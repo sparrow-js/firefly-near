@@ -1,0 +1,54 @@
+@import '../../../scss/variable';
+
+$pro-layout-card-padding: $s-5;
+$pro-layout-card-padding-s: $s-3;
+
+.pro-layout-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $color-white;
+  border-radius: $corner-2;
+  display: flex;
+  flex-direction: column;
+
+  &-body {
+    flex: 1 1 auto;
+    &__panel {
+      padding: $pro-layout-card-padding;
+      padding-bottom: 0;
+    }
+    &__nopadding {
+      padding: 0;
+    }
+
+    // .pro-layout-card-header + & {
+    //   .pro-layout-card-body__panel {
+    //     padding-top: 0;
+    //   }
+    // }
+  }
+
+  &--dialog {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.pro-layout-card-footer-actions {
+  padding-bottom: $pro-layout-card-padding;
+}
+.pro-layout-pro-card-operation-container {
+  padding: $pro-layout-card-padding $pro-layout-card-padding 0;
+}
+
+.pro-layout-pro-card-operation-fixed {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 -4px 10px 0 rgba(74, 91, 109, 0.1);
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  padding-bottom: $pro-layout-card-padding;
+}

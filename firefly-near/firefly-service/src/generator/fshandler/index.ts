@@ -1,7 +1,6 @@
 import * as fsExtra from 'fs-extra';
 import * as pathInstance from 'path';
 import * as prettier from 'prettier';
-import parserTs from 'prettier/parser-typescript';
 
 export default class FsHandler {
   static _instance: FsHandler;
@@ -23,7 +22,15 @@ export default class FsHandler {
 
   writeFile(path: string, content: string, isFormat?: boolean) {
     // const options = prettier.resolveConfig.sync(); // 使用默认配置
-    const formatCode = isFormat ? prettier.format(content) : content;
+    const formatCode = isFormat
+      ? prettier.format(content, {
+          printWidth: 100,
+          tabWidth: 2,
+          semi: true,
+          singleQuote: true,
+          trailingComma: 'all',
+        })
+      : content;
     fsExtra.writeFileSync(path, formatCode, 'utf8');
   }
 
@@ -72,7 +79,5 @@ export default class FsHandler {
     }, []);
   }
 
-  codeMapToFile() {
-
-  }
+  codeMapToFile() {}
 }

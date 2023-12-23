@@ -1,0 +1,165 @@
+#{$biz-css-prefix}page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-lining);
+
+  .next-tabs-pure,
+  .next-tabs-text {
+    #{$biz-css-prefix}page-tab {
+      background: #fff;
+      border-bottom: none;
+    }
+  }
+
+  &-content-tab {
+    display: flex;
+    flex-direction: column;
+    & > .next-tabs {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      & > .next-tabs-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        & > .next-tabs-tabpane.active {
+          flex: 1;
+        }
+
+        & > .next-tabs-tabpane.active,
+        & > .next-tabs-tabpane.hidden {
+          display: flex;
+          #{$biz-css-prefix}page-content {
+            display: flex;
+            flex: 1 1 auto;
+            & > #{$biz-css-prefix}page-main {
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-pro-header {
+    padding: var(--page-header-padding-ver) var(--page-header-padding-hoz);
+    background-color: var(--color-surface);
+    flex: 0 0 auto;
+  }
+  &-pro-header-divider {
+    position: relative;
+    &:after {
+      content: ' ';
+      height: 1px;
+      display: block;
+      background-color: var(--color-lining);
+      position: absolute;
+      bottom: -1px;
+      left: var(--page-padding-hoz);
+      right: var(--page-padding-hoz);
+    }
+  }
+  &-main > #{$biz-css-prefix}tab.next-tabs .next-tabs-content {
+    padding: 0;
+    #{$biz-css-prefix}page-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &-bg-transparent {
+    background-color: transparent;
+  }
+
+  &-bg-lining {
+    background-color: var(--color-lining);
+  }
+
+  &-bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  &-footer {
+    padding: var(--page-padding-ver) var(--page-padding-hoz);
+    flex: 0 0 auto;
+    &#{$biz-css-prefix}page-fixed {
+      background: white;
+      position: fixed;
+      width: 100vw;
+      z-index: 10;
+      bottom: 0;
+      min-height: 50px;
+      box-shadow: 0 -2px 6px 0 rgba(0, 0, 0, 0.07);
+    }
+  }
+
+  &-min-height-helper {
+    flex: 1;
+    display: flex;
+  }
+
+  &-centermode {
+    #{$biz-css-prefix}page-header-content,
+    #{$biz-css-prefix}page-footer-content,
+    #{$biz-css-prefix}page-content {
+      max-width: var(--page-max-width);
+      min-width: var(--page-min-width);
+      margin: 0 auto;
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto;
+    display: flex;
+    padding: var(--page-padding-ver) var(--page-padding-hoz);
+
+    &#{$biz-css-prefix}page-content-nopadding {
+      padding: 0;
+    }
+
+    #{$biz-css-prefix}page-main {
+      flex: 1;
+      // display: grid;
+      // grid-row-gap: var(--page-gutter-row);
+      // grid-column-gap: var(--page-gutter-column);
+      // grid-template-columns: repeat(12, minmax(0, 1fr));
+      // grid-area: span 1 / span 1;
+      // & + #{$biz-css-prefix}page-aside {
+      //   margin-left: var(--page-padding-hoz);
+      // }
+
+      &#{$biz-css-prefix}display-grid {
+        display: grid;
+        grid-row-gap: var(--page-gutter-row);
+        grid-column-gap: var(--page-gutter-column);
+
+        #{$biz-css-prefix}block:not(:first-child) {
+          margin-top: 0;
+        }
+      }
+    }
+    // #{$biz-css-prefix}page-nav {
+    //   width: var(--s-compact);
+    //   & + #{$biz-css-prefix}page-main {
+    //     margin-left: var(--page-padding-hoz);
+    //   }
+    // }
+    #{$biz-css-prefix}page-nav {
+      margin-right: var(--page-padding-hoz);
+    }
+
+    #{$biz-css-prefix}page-aside {
+      // width: var(--s-compact);
+      margin-left: var(--page-padding-hoz);
+      #{$biz-css-prefix}block {
+        margin: var(--page-gutter-row) 0;
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+    &-center {
+      margin: 0 auto;
+    }
+  }
+}

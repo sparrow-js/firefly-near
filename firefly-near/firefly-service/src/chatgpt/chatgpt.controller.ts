@@ -18,6 +18,11 @@ export class ChatgptController {
     return 'This action returns all cats';
   }
 
+  @Get('testgpt')
+  async testgpt() {
+    this.chatgptService.testgpt();
+  }
+
   @Get('connect')
   connect(@Query('appKey') appKey) {
     const res = this.chatgptService.connect();
